@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    {{ user.name }} Saytga hush kelibsiz!!!
+    <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Log Out</button>
+    </form>
+    {% else %}
+    Siz saytga kirmagansiz
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'signup' %}">signup</a>
+    {% endif %}
+{% endblock content %}
